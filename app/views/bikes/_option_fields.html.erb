@@ -1,0 +1,9 @@
+<div class="nested-fields border-top p-3 d-flex align-items-center">
+  <div class="mr-2">
+    <%= f.input :name, label: :name, placeholder: "Add option type" %>
+    <%= f.input :price, label: :price, placeholder: "Add option price" %>
+  </div>
+  <div class="ml-auto">
+    <%= link_to_remove_association "Remove Option", f, class: "tx-13" %>
+  </div>
+</div>
