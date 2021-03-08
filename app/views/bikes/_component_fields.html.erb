@@ -1,0 +1,15 @@
+<div class="nested-fields mb-5 p-3 df-example" data-label="<%= "pasd" %>">
+  <%= f.input :name, label: false, placeholder: "Component name..." %>
+
+  <div class="answers w-75">
+    <h6>Options</h6>
+    <%= f.simple_fields_for(:options) do |fq| %>
+      <%= render 'option_fields', f: fq %>
+    <% end %>
+    <div class="links mb-3">
+      <%= link_to_add_association "Add an option", f, :options, class: "add_fields tx-13" %>
+    </div>  
+  </div>
+
+  <%= link_to_remove_association "Remove component", f, class: "btn btn-light existing remove_fields tx-13" %>
+</div>

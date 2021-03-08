@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_101011) do
 
   create_table "options", force: :cascade do |t|
     t.string "name"
-    t.integer "prince"
+    t.integer "price"
     t.bigint "component_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -1,0 +1,17 @@
+<%= simple_form_for(@bike) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :name  %>
+    <%= f.input :price %>
+
+    <h4 class="mt-5">Components</h4>
+    <div class="comp">
+      <%= f.simple_fields_for(:components) do |fq| %>
+        <%= render 'component_fields', f: fq %>
+      <% end %>
+      <div class="links mb-5">
+        <%= link_to_add_association "Add a component", f, :components, class: "add_fields btn btn-light btn-primary btn-sm uppercase btn-sm btn-uppercase pd-x-15 tx-13" %>
+      </div>
+    </div>
+  </div>
+  <%= f.submit "Create bike", class: "btn btn-primary" %>
+<% end %>
