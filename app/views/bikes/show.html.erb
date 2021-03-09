@@ -5,5 +5,5 @@
     <div class="d-flex"><p>Price: $</p><%= @bike.price %></div>
     <p>Some awsome text about the awsome bike you are about to buy!</p>
 
-    
+    <%= link_to 'Buy and customize your bike!', new_customization_path(bike: @bike), class:"btn btn-primary" %>
 </div>
