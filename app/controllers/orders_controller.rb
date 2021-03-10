@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     authorize @order
-    @bike = Bike.find(params[:bike])
+    @bike = Bike.find(params[:bike_id])
     @customization = Customization.new
   end
 

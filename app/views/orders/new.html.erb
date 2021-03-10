@@ -1,5 +1,5 @@
 <div class="container">
-  <%= simple_form_for(@order) do |f| %>
+  <%= simple_form_for([@bike, @order]) do |f| %>
     <%= f.hidden_field :bike_id, value: @bike.id%>
     <div class="form-inputs">
 
