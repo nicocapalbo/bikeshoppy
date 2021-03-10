@@ -1,0 +1,19 @@
+<div class="container">
+  <%= simple_form_for(@order) do |f| %>
+    <%= f.hidden_field :bike_id, value: @bike.id%>
+    <div class="form-inputs">
+
+      <h4 class="mt-5">Customizations</h4>
+      <% @bike.components.each do |comp| %>
+        <div class="mb-3 border">
+          <p><%= comp.name %></p> 
+          <% comp.options.each do |opt| %>
+          <input type="radio" name="options[<%= comp.name.last(4)%>]" value="<%= opt.id%>"> 
+          <label><%= opt.name %></label> 
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <%= f.submit "Create order", class: "btn btn-primary" %>
+  <% end %>
+</div>

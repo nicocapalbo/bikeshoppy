@@ -1,0 +1,14 @@
+<div class="nested-fields mb-5 p-3 df-example" data-label="<%= "pasd" %>">
+  
+  <div class="answers w-75">
+    <h6>Options</h6>
+    <%= f.simple_fields_for(@bike) do |fq| %>
+      <%= fq.association :components %>
+    <% end %>
+    <div class="links mb-3">
+      
+    </div>  
+  </div>
+
+  <%= link_to_remove_association "Remove component", f, class: "btn btn-light existing remove_fields tx-13" %>
+</div>
