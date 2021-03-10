@@ -7,10 +7,10 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.new(order_params)
-    
     if @order.save
       prms = JSON.parse(option_params.to_json)
       prms.each_value { |value| Customization.create!(order: @order, option_id: value.to_i) }
+      @order.update(total: @order.bike.price + @order.order_total)
       redirect_to order_path(@order)
     else
       render new
