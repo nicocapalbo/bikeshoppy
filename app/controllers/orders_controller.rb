@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.new(order_params)
+    
     if @order.save
       prms = JSON.parse(option_params.to_json)
       prms.each_value { |value| Customization.create!(order: @order, option_id: value.to_i) }
