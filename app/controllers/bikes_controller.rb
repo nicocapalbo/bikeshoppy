@@ -51,6 +51,7 @@ class BikesController < ApplicationController
       :name,
       :price,
       :disabled,
+      :image,
       components_attributes: [
         :id,
         :name,
