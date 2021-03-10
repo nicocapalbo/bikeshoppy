@@ -8,7 +8,7 @@
         <div class="mb-3 border">
           <p><%= comp.name %></p> 
           <% comp.options.each do |opt| %>
-          <input type="radio" name="options[<%= comp.name.last(4)%>]" value="<%= opt.id%>"> 
+          <input type="radio" name="options[<%= comp.name.last(4)%>]" value="<%= opt.id%>" <%= "disabled" if opt.disabled %>> 
           <label><%= opt.name %></label> 
           <% end %>
         </div>

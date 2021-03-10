@@ -2,6 +2,7 @@
   <div class="mr-2">
     <%= f.input :name, label: :name, placeholder: "Add option type" %>
     <%= f.input :price, label: :price, placeholder: "Add option price" %>
+    <%= f.input :disabled, as: :boolean, label: :disabled, placeholder: "Disable item" %>
   </div>
   <div class="ml-auto">
     <%= link_to_remove_association "Remove Option", f, class: "tx-13" %>

@@ -45,6 +45,7 @@ class BikesController < ApplicationController
       :id,
       :name,
       :price,
+      :disabled,
       components_attributes: [
         :id,
         :name,
@@ -53,6 +54,7 @@ class BikesController < ApplicationController
           :id,
           :name,
           :price,
+          :disabled,
           :_destroy
         ]
       ]
