@@ -5,5 +5,11 @@
     <div class="d-flex"><p>Price: $</p><%= @bike.price %></div>
     <p>Some awsome text about the awsome bike you are about to buy!</p>
 
-    <%= link_to 'Buy and customize your bike!', new_order_path(bike: @bike), class:"btn btn-primary" %>
+    <% if @bike.disabled %>
+      <p>Out of Stock</p>
+    <% else %>
+      <%= link_to 'Buy and customize your bike!', new_order_path(bike: @bike), class:"btn btn-primary" %>
+    <% end %>
+    <br>
+    <%= link_to 'Back', :back, class:"btn btn-secondary"%>
 </div>
