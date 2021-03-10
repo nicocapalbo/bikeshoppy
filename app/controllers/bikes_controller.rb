@@ -9,10 +9,12 @@ class BikesController < ApplicationController
 
   def new
     @bike = Bike.new
+    authorize @bike
   end
 
   def create
     @bike = Bike.new(bike_params)
+    authorize @bike
     if @bike.save
       redirect_to bikes_path(@bike)
     else
@@ -21,9 +23,11 @@ class BikesController < ApplicationController
   end
 
   def edit
+    authorize @bike
   end
 
   def update
+    authorize @bike
     if @bike.update(bike_params)
       redirect_to bike_path(@bike)
     else
@@ -32,6 +36,7 @@ class BikesController < ApplicationController
   end
 
   def destroy
+    authorize @bike
   end
 
   private
