@@ -1,17 +1,65 @@
-<div class="container">
-  <h1>Bikes#index</h1>
-  <p>Find me in app/views/bikes/index.html.erb</p>
+<div class="admin-bar">
+  <% if policy(:bike).new? %>
+    <%= link_to 'Create Bike', new_bike_path, class: "btn btn-primary" %>
+  <% end %>
+</div>
 
-
+<div class="cards-container">
   <% @bikes.each do |bike| %>
     <%= link_to bike_path(bike) do %>
-      <div class="container">
-      <%= bike.name %>
-      <%= bike.price %>
+      <div class="card-container" <%= "style=opacity:0.4" if bike.disabled %> >
+        <div class="card">
+          <div class="card-head">
+            <div class="product-img">
+              <%= image_tag bike.image, class:"img_preview" %>
+            </div> 
+            <div class="product-detail">
+              <div style="position: absolute;font-size: 100px;margin-left: 5px;font-weight: bold;line-height: 100px;opacity: 0.1;"><%= bike.name.upcase %></div>
+              <div style="font-size: 50px;font-weight: bold;display: flex;height: 100%;align-items: center;width: 50%;position: absolute;bottom: 0px;line-height: normal"><%= bike.name.upcase %></div> 
+            </div>
+            
+          </div>
+          <div class="card-body">
+            <div class="product-desc">
+              <span class="product-title">
+                      <b><%= bike.name %></b>
+                      <span class="badge">
+                        New
+                      </span>
+              </span>
+              <span class="product-caption">
+                      Basket Ball Collection
+                    </span>
+              <span class="product-rating">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star grey"></i>
+                    </span>
+            </div>
+            <div class="product-properties">
+              <span class="product-color">
+                      <h4>Colour</h4>
+                      <ul class="ul-color">
+                        <li><a href="#" class="orange"></a></li>
+                        <li><a href="#" class="green"></a></li>
+                        <li><a href="#" class="yellow"></a></li>
+                      </ul>
+                    </span>
+              <span class="product-price">
+                <b><%= !bike.disabled ? "USD #{bike.price}" : "Out of Stock" %></b>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     <% end %>
   <% end %>
-
-  <%= link_to 'Create Bike', new_bike_path, class: "btn btn-primary" %>
-
 </div>
+
+
+
+  
+
+  

@@ -1,15 +1,157 @@
-<div class="container">
-  <h1>Bikes#show</h1>
-  <p>Find me in app/views/bikes/show.html.erb</p>
-    <div class="d-flex"><p>Bike model: </p><%= @bike.name %></div>
-    <div class="d-flex"><p>Price: $</p><%= @bike.price %></div>
-    <p>Some awsome text about the awsome bike you are about to buy!</p>
-
-    <% if @bike.disabled %>
-      <p>Out of Stock</p>
-    <% else %>
-      <%= link_to 'Buy and customize your bike!', new_bike_order_path(@bike), class:"btn btn-primary" %>
-    <% end %>
-    <br>
-    <%= link_to 'Back', :back, class:"btn btn-secondary"%>
+<!--
+<div>
+  <%= link_to 'Back', :back, class:"btn btn-secondary"%>
 </div>
+
+<div class="container">
+
+  <div class="cards-container">
+    <div class="card-container" style="min-width: 1050px;">
+      <div class="card">
+        <div class="card-head">
+          <div class="product-img" style="position: absolute;top: -100px;left: 320px;">
+            <%= image_tag @bike.image, class:"img_preview", style:'max-width: 650px;'%>
+          </div> 
+          <div class="product-detail"> 
+            <h2><%= @bike.name %></h2> Support and Nike Zoom Air come together for a more supportive feel with high-speed responsiveness
+          </div>
+          
+        </div>
+        <div class="card-body">
+          <div class="product-desc">
+            <span class="product-title">
+                    <b><%= @bike.name %></b>
+                    <span class="badge">
+                      New
+                    </span>
+            </span>
+            <span class="product-caption">
+                    Basket Ball Collection
+                  </span>
+            <span class="product-rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star grey"></i>
+                  </span>
+          </div>
+          <div class="product-properties">
+            <span class="product-color">
+                    <h4>Colour</h4>
+                    <ul class="ul-color">
+                      <li><a href="#" class="orange"></a></li>
+                      <li><a href="#" class="green"></a></li>
+                      <li><a href="#" class="yellow"></a></li>
+                    </ul>
+                  </span>
+                  <% if @bike.disabled %>
+                    <p>Out of Stock</p>
+                  <% else %>
+                    <%= link_to new_bike_order_path(@bike) do %>
+                      <span class="product-price" style="right:60px">
+                        USD<b><%= @bike.price %></b>
+                        <p>Buy now!</p> 
+                      </span>  
+                    <% end %>
+                  <% end %>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+
+  <%= render '/orders/new' %>
+
+</div>
+-->
+
+<div class="show">
+  
+  <div class="show-header">
+  <% if policy(:bike).new? %>
+  <div class="admin-bar">
+    <%= link_to 'Edit Bike', edit_bike_path(@bike), class: "btn btn-primary" %>
+  </div>
+<% end %>
+    <div class="back-title"><%= @bike.name.upcase %></div>
+    <div class="title"><%= @bike.name.upcase %></div> 
+    <div class="">
+      <%= image_tag @bike.image, class:"img_preview"%>
+    </div> 
+  </div>
+  
+  <div class="show-body">
+    <div class="left-pane">
+      <div class=""><h3><%= @bike.name %></h3></div>
+      <div class="rating mb-3">
+        <span class="product-rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star grey"></i>
+        </span>
+      </div>
+      <div class="description">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et diam aliquet nunc vestibulum elit bibendum mi dui. Placerat aliquam enim mi ligula. Posuere mattis risus rhoncus aenean id placerat. Semper erat nisl molestie vitae bibendum mattis neque.
+          Leo ultricies ut vitae egestas ultricies at. Libero ipsum integer vitae elit ornare dignissim in.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et diam aliquet nunc vestibulum elit bibendum mi dui. Placerat aliquam enim mi ligula. Posuere mattis risus rhoncus aenean id placerat. Semper erat nisl molestie vitae bibendum mattis neque.
+          Leo ultricies ut vitae egestas ultricies at. Libero ipsum integer vitae elit ornare dignissim in.</p>
+      </div>
+      
+    </div>
+    <div class="vl"></div>
+    <div class="right-pane">
+      <%= simple_form_for([@bike, @order]) do |f| %>
+        <%= f.hidden_field :bike_id, value: @bike.id%>
+          <div class="form-inputs">
+
+            <h4 class="mt-4 order-title mb-5">Customize your order</h4>
+            <% @bike.components.each do |comp| %>
+
+              <div class="mb-4">
+                <p style="margin-bottom: 0rem;"><%= comp.name %></p> 
+                <div class="tag-item">
+                <% comp.options.each do |opt| %>
+                  <input class="tag-selector" type="radio" name="options[<%= comp.name.last(4)%>]" value="<%= opt.id%>" id="options[<%= comp.name.last(4)%>]<%= opt.id%>" <%= "disabled" if opt.disabled %>> 
+                  <label for="options[<%= comp.name.last(4)%>]<%= opt.id%>"><%= opt.name %></label>
+                <% end %>
+                </div>
+              </div>
+
+
+            <% end %>
+          </div>
+        <%= f.submit "Create order", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+
+    
+  
+  
+  
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
