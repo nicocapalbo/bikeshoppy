@@ -9,7 +9,7 @@
 
 
 
-# User.create!(email: "admin@mail.com", password: 123456, password_confirmation: 123456, role: 1)
+User.create!(email: "admin@mail.com", password: 123456, password_confirmation: 123456, role: 1)
 
 bike = Bike.create!(name: "Intense Tracer", price: 5399, disabled: false)
 bike.image.attach(io: File.open(File.join(Rails.root, 'app/assets/images/bike5.png')), filename: 'bike5.png', content_type: 'image/jpeg')
