@@ -13,8 +13,9 @@
             <div class="product-img">
               <%= image_tag bike.image, class:"img_preview" %>
             </div> 
-            <div class="product-detail"> 
-              <h2><%= bike.name %></h2> Support and Nike Zoom Air come together for a more supportive feel with high-speed responsiveness
+            <div class="product-detail">
+              <div style="position: absolute;font-size: 100px;margin-left: 5px;font-weight: bold;line-height: 100px;opacity: 0.1;"><%= bike.name.upcase %></div>
+              <div style="font-size: 50px;font-weight: bold;display: flex;height: 100%;align-items: center;width: 50%;position: absolute;bottom: 0px;line-height: normal"><%= bike.name.upcase %></div> 
             </div>
             
           </div>
