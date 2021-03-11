@@ -5,6 +5,10 @@ class BikesController < ApplicationController
   end
 
   def show
+    @order = Order.new
+    authorize @order
+    @bike = Bike.find(params[:id])
+    @customization = Customization.new
   end
 
   def new

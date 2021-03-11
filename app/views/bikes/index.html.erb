@@ -7,7 +7,7 @@
 <div class="cards-container">
   <% @bikes.each do |bike| %>
     <%= link_to bike_path(bike) do %>
-      <div class="card-container">
+      <div class="card-container" <%= "style=opacity:0.4" if bike.disabled %> >
         <div class="card">
           <div class="card-head">
             <div class="product-img">
@@ -47,8 +47,8 @@
                       </ul>
                     </span>
               <span class="product-price">
-                      USD<b><%= bike.price %></b>
-                    </span>
+                <b><%= !bike.disabled ? "USD #{bike.price}" : "Out of Stock" %></b>
+              </span>
             </div>
           </div>
         </div>
