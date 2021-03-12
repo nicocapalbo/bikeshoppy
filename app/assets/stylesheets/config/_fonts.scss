@@ -3,7 +3,7 @@
 
 // Define fonts for body and headers
 $body-font: "Open Sans","Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$headers-font: "Open Sans","Nunito", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -19,4 +19,23 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 h3 {
   font-size: 32px;
   font-weight: 500;
+  font-family: 'Open Sans';
+}
+
+h4 {
+  font-family: 'Open Sans';
+  font-size: 28px;
+  font-weight: 500;
+}
+
+h5 {
+  font-family: 'Open Sans';
+  font-size: 28px;
+  font-weight: 500;
+}
+
+h6 {
+  font-family: 'Open Sans';
+  font-size: 24px;
+  font-weight: 400;
 }
