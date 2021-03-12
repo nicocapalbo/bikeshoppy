@@ -1,56 +1,53 @@
-<div class="container">
+<div class="order-container" style="background: linear-gradient(135deg, #fa782e 8%, #c82930 83%);color:white;padding: 2%;width:65%;">
+  <div class="order-prod-divider">
 
-<aside class="order-summary bg-contrast-lower radius-md ">
-  <header class="order-summary__header bg-contrast-lower flex justify-between padding-sm">
-    <p class="text-sm">Your cart (2) <span class="sr-only">items</span></p>
-    <a class="text-sm" href="#0" role="text">Edit <i class="sr-only">cart</i></a>
-  </header>
-
-  <div class="padding-x-sm">
-    <ul class="flex flex-column gap-sm">
-      <li class="order-summary__item">
-        <a href="#0" class="order-summary__img"><img src="../../../app/assets/img/cart-img-1.jpg" alt="Image description"></a>
-
-        <div class="flex flex-wrap justify-between gap-xxxs">
-          <div>
-            <p class="color-contrast-higher">Product One</p>
-            <p class="color-contrast-medium text-sm">Color: Black, Size: M, Qty: 1</p>
-          </div>
-
-          <p class="color-contrast-higher"><span class="sr-only">Price:</span> $49.00</p>
+    <div class="order-prod d-flex">
+      <div class="prodbike p-1">
+        <%= image_tag @order.bike.image, class:"img_preview", style:"width:250px"%>
+      </div>
+      <div class="prodinfo">
+        <h3 class="prodtitle"><%= @order.bike.name.upcase %></h3> 
+        <div class="prodprice">
+         <div class="productprice">USD<%= @order.bike.price %></div> 
         </div>
-      </li>
-
-      <li class="order-summary__item">
-        <a href="#0" class="order-summary__img"><img src="../../../app/assets/img/cart-img-1.jpg" alt="Image description"></a>
-
-        <div class="flex flex-wrap justify-between gap-xxxs">
-          <div>
-            <p class="color-contrast-higher">Product Two</p>
-            <p class="color-contrast-medium text-sm">Color: Black, Size: M, Qty: 1</p>
-          </div>
-
-          <p class="color-contrast-higher"><span class="sr-only">Price:</span> $49.00</p>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-  <footer class="order-summary__footer bg-contrast-lower padding-x-sm padding-bottom-sm">
-    <div class="margin-y-sm padding-y-sm border-top border-bottom">
-      <div class="flex flex-column flex-row@md gap-xxs">
-        <input aria-label="Discount code" class="form-control flex-grow min-width-0" type="email" placeholder="Discount code">
-        <button class="btn btn--subtle">Apply</button>
       </div>
     </div>
 
-    <ul class="text-sm flex flex-column gap-xxs">
-      <li class="flex justify-between"><i>Subtotal</i> <i>$98.00</i></li>
-      <li class="flex justify-between"><i>Tax</i> <i>$10.00</i></li>
-      <li class="flex justify-between"><i>Delivery</i> <i>Free</i></li>
-      <li class="flex justify-between font-bold"><i>Total</i> <i>$108.00</i></li>
-    </ul>
-  </footer>
-</aside>
+    <% @order.customizations.each do |custom| %>
+      <div class="order-prod d-flex">
+        <div class="prodbike p-1">
+          <%= image_tag @order.bike.image, class:"img_preview", style:"width:250px"%>
+        </div>
+        <div class="prodinfo">
+          <h5 class="prodtitle"><%= custom.option.component.name.upcase %></h3> 
+          <h6 class="prodtitle"><%= custom.option.name.upcase %></h4> 
+          <div class="prodprice">
+          <div class="productprice">+<%= custom.option.price %>USD</div> 
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="order-prod-divider">
+    <div class="order-info">
+      <span class="ordertitle">ORDER SUMMARY</span>
+      <div class="d-flex">
+	      <input class="inputt" type="text" id="input" placeholder="Discount coupon..">
+        <button class="btn btn-primary ml-4">Apply</button>
+      </div>
+      <span class="orderdetails">Product cost: USD<%= @order.bike.price %> </span>
+      <% @order.customizations.each do |custom| %>
+        <span class="orderdetails"><%= custom.option.component.name %> <%= custom.option.name %> USD<%= custom.option.price %> </span>
+      <% end %>
+      <span class="orderdetails">Taxes: USD<%= (@order.total * 0.21).round(2) %> </span>
+
+      <span class="ordertitle" style="width:100%">TOTAL: USD<%= @order.total + (@order.total * 0.21) %> </span> 
+      
+    
+    
+    </div>
+  </div>
+
 
 </div>

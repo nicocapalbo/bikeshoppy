@@ -83,7 +83,13 @@
   
   <div class="show-body">
     <div class="left-pane">
-      <div class=""><h3><%= @bike.name %></h3></div>
+      <div class="d-flex">
+        <div class=""><h3><%= @bike.name %></h3></div>
+        <div><span class="product-price position-relative" style="top: 0px;right: 0px;margin-left: 120px;">
+             <b><%= !@bike.disabled ? "USD #{@bike.price}" : "Out of Stock" %></b>
+             </span>
+        </div>
+      </div>
       <div class="rating mb-3">
         <span class="product-rating">
           <i class="fa fa-star"></i>
@@ -115,7 +121,7 @@
                 <div class="tag-item">
                 <% comp.options.each do |opt| %>
                   <input class="tag-selector" type="radio" name="options[<%= comp.name.last(4)%>]" value="<%= opt.id%>" id="options[<%= comp.name.last(4)%>]<%= opt.id%>" <%= "disabled" if opt.disabled %>> 
-                  <label for="options[<%= comp.name.last(4)%>]<%= opt.id%>"><%= opt.name %></label>
+                  <label for="options[<%= comp.name.last(4)%>]<%= opt.id%>"><%= "#{opt.name}" %><%= " +#{opt.price}USD" if opt.price != 0 %></label>
                 <% end %>
                 </div>
               </div>
